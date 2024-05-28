@@ -5,7 +5,11 @@
         static void Main(string[] args)
         {
 
-            Person person1 = new();
+            Person person1 = new()
+            {
+                Name = "Kalle"
+            };
+
             var nameLength = person1.Name?.Length ?? 0;
             Admin admin = new Admin();
             Person person4 = new Employee();
@@ -23,13 +27,14 @@
             foreach (Person person in list)
             {
                 //Admin admin2 = (Admin)person;
-                if(person is Admin admin3)
-                {
-                    Admin admin2 = (Admin)person;
-                    admin2.ADo();
+                //if(person is Admin admin3)
+                //{
+                //    Admin admin2 = (Admin)person;
+                //    admin2.ADo();
 
-                    admin3.ADo();
-                }
+                //    admin3.ADo();
+                //}
+                person.Do();
 
 
             }

@@ -16,10 +16,10 @@ namespace OOP
 
     internal class Person : IPerson
     {
-        public string? Name { get; set; } //= string.Empty;
-        public void Do()
+        public string Name { get; set; } = string.Empty;
+        public virtual void Do()
         {
-            Console.WriteLine("Person doing");
+            Console.WriteLine($"{this.GetType().Name} doing");
         }
     }
 
@@ -31,9 +31,12 @@ namespace OOP
 
     internal class Admin : Employee
     {
-        public void ADo()
+
+        public override void Do()
         {
-            Console.WriteLine("Admin doing");
+            base.Do();
+            Console.WriteLine("Admin doing2");
         }
+
     }
 }
