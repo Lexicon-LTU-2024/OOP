@@ -4,58 +4,78 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP
+namespace OOP;
+
+
+internal interface IPerson
 {
+    string Name { get; }
+    void Do();
+   // void Do2();
+}
 
-    internal interface IPerson
+internal class Person : IPerson
+{
+    public string Name { get; protected set; }
+
+    public Person(string name)
     {
-        string Name { get; set; }
-        void Do();
-       // void Do2();
+        Name = name;
+    }
+    public virtual void Do()
+    {
+        Console.WriteLine($"{this.GetType().Name} doing");
+    }
+}
+
+internal class Employee : Person
+{
+    private int _salary;
+
+    public int Salary
+    {
+        get { return _salary; }
+        set 
+        { 
+            if(value < 10)
+            {
+                throw new ArgumentException();
+            }
+            _salary = value; 
+        }
     }
 
-    internal class Person : IPerson
-    {
-        public string Name { get; set; }
+   // public int Salary { get; set; }
 
-        public Person(string name)
-        {
-            Name = name;
-        }
-        public virtual void Do()
-        {
-            Console.WriteLine($"{this.GetType().Name} doing");
-        }
+    public Employee(string name, int salary) : base(name) 
+    {
+        Salary = salary;
     }
 
-    internal class Employee : Person
+}
+
+internal sealed  class Admin : Employee
+{
+    public Admin() : base("Admin", 2500)
     {
-        public int Salary { get; set; }
-        public Employee(string name, int salary) : base(name) 
-        {
-            Salary = salary;
-        }
 
     }
 
-    internal class Admin : Employee
+    public sealed override void Do()
     {
-        public Admin() : base("Admin", 2500)
-        {
-
-        }
-
-        public override void Do()
-        {
-            Name = "Admin";
-            base.Do();
-            Console.WriteLine("Admin doing2");
-        }
-
-        public void ADo()
-        {
-            Console.WriteLine("ABC");
-        }
-
+        Name = "Admin";
+        base.Do();
+        Console.WriteLine("Admin doing2");
     }
+
+    public void ADo()
+    {
+        Console.WriteLine("ABC");
+    }
+
+}
+
+internal class SuperUser : Admin
+{
+     
 }
