@@ -16,7 +16,12 @@ namespace OOP
 
     internal class Person : IPerson
     {
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; }
+
+        public Person(string name)
+        {
+            Name = name;
+        }
         public virtual void Do()
         {
             Console.WriteLine($"{this.GetType().Name} doing");
@@ -26,16 +31,30 @@ namespace OOP
     internal class Employee : Person
     {
         public int Salary { get; set; }
+        public Employee(string name, int salary) : base(name) 
+        {
+            Salary = salary;
+        }
 
     }
 
     internal class Admin : Employee
     {
+        public Admin() : base("Admin", 2500)
+        {
+
+        }
 
         public override void Do()
         {
+            Name = "Admin";
             base.Do();
             Console.WriteLine("Admin doing2");
+        }
+
+        public void ADo()
+        {
+            Console.WriteLine("ABC");
         }
 
     }

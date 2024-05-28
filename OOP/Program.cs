@@ -5,17 +5,15 @@
         static void Main(string[] args)
         {
 
-            Person person1 = new()
-            {
-                Name = "Kalle"
-            };
+            Person person1 = new("Kalle");
+           
 
             var nameLength = person1.Name?.Length ?? 0;
             Admin admin = new Admin();
-            Person person4 = new Employee();
+            Person person4 = new Employee("Emp", 25);
 
 
-            Employee person3 = new Employee();
+            Employee person3 = new Employee("Emp2", 30);
 
             List<Person> list = new List<Person>() 
             { 
