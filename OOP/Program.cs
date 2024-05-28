@@ -5,6 +5,10 @@ internal class Program
     static void Main(string[] args)
     {
 
+        string name = "Kalle";
+        var res =name.AddString("Anka");
+        
+
         IPerson person3 = new Employee("Emp2", 30);
         Person person1 = new("Kalle");
        // person1.Name = "Nisse";
@@ -12,7 +16,9 @@ internal class Program
 
         var nameLength = person1.Name?.Length ?? 0;
         Admin admin = new Admin();
+        
         Person person4 = new Employee("Emp", 25);
+        person4.ChangeName("Adam");
 
 
 

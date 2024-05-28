@@ -26,7 +26,7 @@ internal abstract class BasePerson
 
 internal class Person : BasePerson, IPerson
 {
-    public string Name { get; protected set; }
+    public string Name { get;  set; }
     public Person(string name)
     {
         Name = name;
