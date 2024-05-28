@@ -5,7 +5,7 @@ internal class Program
     static void Main(string[] args)
     {
 
-        Employee person3 = new Employee("Emp2", 30);
+        IPerson person3 = new Employee("Emp2", 30);
         Person person1 = new("Kalle");
        // person1.Name = "Nisse";
        
@@ -16,7 +16,7 @@ internal class Program
 
 
 
-        List<Person> list = new List<Person>() 
+        List<IPerson> list = new() 
         { 
             person1, 
             admin, 
@@ -37,6 +37,14 @@ internal class Program
 
 
         }
+
+        Do(new Admin());
+        Do(new Employee("Nisse", 25));
+
+    }
+
+    private static void Do(IPerson person)
+    {
 
     }
 }

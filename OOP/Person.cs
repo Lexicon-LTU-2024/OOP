@@ -14,17 +14,27 @@ internal interface IPerson
    // void Do2();
 }
 
-internal class Person : IPerson
+internal abstract class BasePerson
+{
+    public abstract void Work();
+    public virtual void Do()
+    {
+        Console.WriteLine($"{this.GetType().Name} doing");
+    }
+
+}
+
+internal class Person : BasePerson, IPerson
 {
     public string Name { get; protected set; }
-
     public Person(string name)
     {
         Name = name;
     }
-    public virtual void Do()
+
+    public override void Work()
     {
-        Console.WriteLine($"{this.GetType().Name} doing");
+        
     }
 }
 
@@ -75,7 +85,7 @@ internal sealed  class Admin : Employee
 
 }
 
-internal class SuperUser : Admin
-{
+//internal class SuperUser : Admin
+//{
      
-}
+//}
